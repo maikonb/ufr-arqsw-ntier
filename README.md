@@ -502,6 +502,7 @@ Crie uma pasta chamada `web` na raiz do projeto.
 Dentro da pasta `web`, crie um arquivo chamado `server.ts` com o seguinte conteúdo:
 
 ```typescript
+
 import express from 'express'
 import { ProdutoRepo } from '../repos/ProdutoRepo.js'
 import { ProdutoService } from '../services/ProdutoService.js'
@@ -518,8 +519,8 @@ app.post('/produtos', async (req, res) => {
   try {
     const produto = await produtoService.adicionarProduto(nome, quantidade)
     res.status(201).json(produto)
-  } catch (error) {
-    res.status(400).json({ error: error.message })
+  } catch (error: any) {
+    res.status(400).json({ error: error?.message })
   }
 })
 app.get('/produtos', async (req, res) => {
@@ -533,8 +534,8 @@ app.patch('/produtos/:id/incrementar', async (req, res) => {
   try {
     const produto = await produtoService.incrementarQuantidade(id, quantidade)
     res.json(produto)
-  } catch (error) {
-    res.status(400).json({ error: error.message })
+  } catch (error: any) {
+    res.status(400).json({ error: error?.message })
   }
 })
 
@@ -544,14 +545,15 @@ app.patch('/produtos/:id/decrementar', async (req, res) => {
   try {
     const produto = await produtoService.decrementarQuantidade(id, quantidade)
     res.json(produto)
-  } catch (error) {
-    res.status(400).json({ error: error.message })
+  } catch (error: any) {
+    res.status(400).json({ error: error?.message })
   }
 })
 
 app.listen(port, () => {
   console.log(`Servidor rodando em http://localhost:${port}`)
 })
+
 ```
 
 Para iniciar o servidor web, use o comando abaixo:
