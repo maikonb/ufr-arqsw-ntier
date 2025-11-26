@@ -27,7 +27,7 @@ npm install typescript tsx @types/node --save-dev
 npx tsc --init
 
 # 6. Instala Prisma e os tipos para Node e PostgreSQL como devDependencies
-npm install prisma @types/node @types/pg @prisma/adapter-pg --save-dev
+npm install prisma @types/node @types/pg @prisma/adapter-pg  @prisma/client --save-dev
 
 # 7. Inicializa o Prisma, gerando a estrutura de arquivos na pasta ../generated/prisma
 npx prisma init --output ../generated/prisma
